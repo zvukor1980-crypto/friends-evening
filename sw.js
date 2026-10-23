@@ -1,6 +1,6 @@
-const V='friends-v2';
+const V='friends-v3';
 const core=()=>fetch('assets.json',{cache:'no-store'}).then(r=>r.json());
-self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(core().then(a=>caches.open(V).then(c=>c.addAll(['./',...a.core,'assets.json']))))});
+self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(core().then(a=>caches.open(V).then(c=>c.addAll([...new Set(['./',...a.core,'assets.json'])]))))});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!=V).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
 self.addEventListener('message',e=>{if(e.data!=='precache-all')return;e.waitUntil(caches.open(V).then(async c=>{const a=await (await c.match('assets.json')).json();for(const u of a.vids){const full=new URL(u,self.registration.scope).href;if(!(await c.match(full))){try{const r=await fetch(full);if(r.ok)await c.put(full,r)}catch(_){}}}}))});
 async function ranged(req,res){const rg=req.headers.get('range');if(!rg)return res;const b=await res.blob(),m=/bytes=(\d*)-(\d*)/.exec(rg),sz=b.size;let s=m[1]?+m[1]:0,en=m[2]?+m[2]:sz-1;if(!m[1]&&m[2]){s=sz-+m[2];en=sz-1}en=Math.min(en,sz-1);
