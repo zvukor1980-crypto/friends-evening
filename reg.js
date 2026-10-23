@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator){navigator.serviceWorker.register(new URL('sw.js',document.currentScript?document.currentScript.src:location.href).href).then(r=>navigator.serviceWorker.ready).then(r=>{r.active&&r.active.postMessage('precache-all')}).catch(()=>{});}

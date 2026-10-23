@@ -1,0 +1,8 @@
+html,body{margin:0;height:100%;background:#140a12;color:#fff;font-family:system-ui,-apple-system,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);box-sizing:border-box}
+h1{font-size:64px;margin:0 0 30px;color:#ffe6c8;text-shadow:0 4px 20px #000}
+.row{display:flex;gap:40px}
+.card{width:40vw;height:46vh;border-radius:32px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;box-sizing:border-box;color:#fff;text-decoration:none;background-size:cover;background-position:center;box-shadow:0 10px 40px rgba(0,0,0,.6),inset 0 0 0 3px rgba(255,255,255,.25)}
+.card span{font-size:40px;font-weight:800;text-shadow:0 2px 10px #000}.card small{font-size:20px;opacity:.85}
+.c1{background-image:linear-gradient(transparent 40%,rgba(0,0,0,.8)),url(evening/assets/room.png)}
+.c2{background-image:linear-gradient(transparent 40%,rgba(0,0,0,.8)),url(big/assets/cafe.webp)}
+.card:active{transform:scale(.97)}#st{opacity:.6;margin-top:24px}
