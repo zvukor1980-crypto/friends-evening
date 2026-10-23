@@ -1,4 +1,4 @@
-const V='friends-v3';
+const V='friends-v4';
 const core=()=>fetch('assets.json',{cache:'no-store'}).then(r=>r.json());
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(core().then(a=>caches.open(V).then(c=>c.addAll([...new Set(['./',...a.core,'assets.json'])]))))});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!=V).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
